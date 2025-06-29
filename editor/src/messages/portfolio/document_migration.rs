@@ -711,11 +711,12 @@ pub fn document_migration_upgrades(document: &mut DocumentMessageHandler, reset_
 
 			let old_inputs = document.network_interface.replace_inputs(node_id, document_node.inputs.clone(), network_path);
 			let new_spacing_value = NodeInput::value(TaggedValue::PointSpacingType(graphene_std::vector::misc::PointSpacingType::Separation), false);
+			let new_quantity_value = NodeInput::value(TaggedValue::U32(100), false);
 
 			document.network_interface.set_input(&InputConnector::node(*node_id, 0), old_inputs[0].clone(), network_path);
 			document.network_interface.set_input(&InputConnector::node(*node_id, 1), new_spacing_value, network_path);
 			document.network_interface.set_input(&InputConnector::node(*node_id, 2), old_inputs[1].clone(), network_path);
-			document.network_interface.set_input(&InputConnector::node(*node_id, 3), old_inputs[1].clone(), network_path);
+			document.network_interface.set_input(&InputConnector::node(*node_id, 3), new_quantity_value, network_path);
 			document.network_interface.set_input(&InputConnector::node(*node_id, 4), old_inputs[2].clone(), network_path);
 			document.network_interface.set_input(&InputConnector::node(*node_id, 5), old_inputs[3].clone(), network_path);
 			document.network_interface.set_input(&InputConnector::node(*node_id, 6), old_inputs[4].clone(), network_path);
